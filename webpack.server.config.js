@@ -5,7 +5,7 @@ module.exports = (env) => {
 	const isProduction = env === 'production';
 
 	return {
-		entry: './app.js',
+		entry: './server.js',
 		output: {
 			path: path.join(__dirname, 'server'),
 			filename: 'app.js'

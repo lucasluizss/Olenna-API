@@ -26,17 +26,26 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/register": "^7.0.0",
     "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "body-parser": "^1.18.3",
     "gulp-babel": "^8.0.0",
     "regenerator-runtime": "^0.13.1",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-node-externals": "^1.7.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "sourceMaps": true,
+    "retainLines": true
   }
 }
