@@ -112,9 +112,9 @@
         ],
         "parameters": [
           {
-            "name": "username",
+            "name": "userId",
             "in": "path",
-            "description": "name that need to be updated",
+            "description": "userId that need to be updated",
             "required": true,
             "type": "string"
           },
@@ -150,9 +150,9 @@
         ],
         "parameters": [
           {
-            "name": "username",
+            "name": "userId",
             "in": "path",
-            "description": "The name that needs to be deleted",
+            "description": "The userId that needs to be deleted",
             "required": true,
             "type": "string"
           }
