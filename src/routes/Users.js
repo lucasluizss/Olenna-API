@@ -1,6 +1,7 @@
 import express 	from 'express';
 import User 		from '../models/User';
 import uuidv4		from 'uuid/v4';
+import 					'../middleware/Utils';
 
 const router = express.Router();
 
@@ -20,16 +21,18 @@ router.get('/', (request, response) => {
 router.post('/', (request, response) => {
 	User.create({
 		_id: uuidv4(),
-		firstName: request.body.firstName,
-		lastName: request.body.lastName,
-		birthDate: request.body.birthDate
+		firstName: 	request.body.firstName.capFirst(),
+		lastName: 	request.body.lastName.capFirst(),
+		birthDate: 	request.body.birthDate,
+		email: 			request.body.email
 	},
 	(error, user) => {
 		if (error) 
-			return response.status(500).send(`There was a problem adding the information to the database. Error: ${error.message}`);
+			return response.status(500).json({ Message: error.message });
 
 		response.status(201).json({
-			Message: `User ${request.body.firstName} added with success!`, user
+			Message: `User ${request.body.firstName} added with success!`, 
+			User: user
 		});
 	});
 });
@@ -45,7 +48,8 @@ router.get('/:userId', (request, response) => {
 		}		
 
 		response.status(200).json({
-			Message: `User with id: ${id} found!`, user
+			Message: `User with id: ${id} found!`, 
+			User: user
 		});
 	});
 });
@@ -62,7 +66,8 @@ router.patch('/:userId', (request, response) => {
 		}		
 
 		response.status(200).json({
-			Message: `User with id: ${id} was deleted!`
+			Message: `User with id: ${id} was updated!`,
+			User: request.body
 		});
 	});
 });
@@ -70,11 +75,11 @@ router.patch('/:userId', (request, response) => {
 router.delete('/:userId', (request, response) => {
 	const id = request.params.userId;
 
-	User.findByIdAndRemove(id, function (error, user) {
+	User.findByIdAndDelete(id, (error, user) => {
 		if (error) {
 			return response.status(500).json({ Message: 'There was a problem deleting the user.' });
 		} else if (!user) {
-			return response.status(404).json({ Message: 'No user found.' });
+			return response.status(404).json({ Message: 'No user found!' });
 		}		
 
 		response.status(200).json({ Message: `User with id: ${id} was deleted!` });
