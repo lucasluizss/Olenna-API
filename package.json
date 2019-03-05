@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node server.js",
     "build": "babel-node api -d public --source-maps",
+    "buildProd": "webpack -p --config=webpack.server.config.js --mode=production --verbose --optimize-minimize",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
