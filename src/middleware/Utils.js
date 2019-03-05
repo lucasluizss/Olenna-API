@@ -21,9 +21,9 @@ export const EnableCors = (request, response, next) => {
 	return next();
 };
 
-export const RouteTracker = (request, next) => {
+export const RouteTracker = (request, response, next) => {
 	console.log(`===> Method: ${request.method} on entity ${request.path}.`);
-	next();
+	return next();
 };
 
 export const ErrorTracker = (request, response) => {

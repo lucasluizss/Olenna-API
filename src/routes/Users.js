@@ -24,10 +24,12 @@ router.post('/', (request, response) => {
 		firstName: 	request.body.firstName.capFirst(),
 		lastName: 	request.body.lastName.capFirst(),
 		birthDate: 	request.body.birthDate,
-		email: 			request.body.email
+		email: 			request.body.email,
+		password:		request.body.password,
+		phone:			request.body.phone
 	},
 	(error, user) => {
-		if (error) 
+		if (error)
 			return response.status(500).json({ Message: error.message });
 
 		response.status(201).json({
