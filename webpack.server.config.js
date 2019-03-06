@@ -1,4 +1,6 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
+
 var nodeExternals = require('webpack-node-externals');
 
 module.exports = (env) => {
@@ -17,7 +19,15 @@ module.exports = (env) => {
 				exclude: /node_modules/
 			}]
 		},
-		plugins: [],
+		plugins: [
+			new Dotenv({
+				path: '.env',
+				safe: true,
+				systemvars: true,
+				silent: true,
+				defaults: false
+			})
+		],
 		target: 'node',
 		externals: [nodeExternals()],
 		node: {

@@ -159,7 +159,7 @@
         ],
         "responses": {
           "400": {
-            "description": "Invalid username supplied"
+            "description": "Invalid userId supplied"
           },
           "404": {
             "description": "User not found"

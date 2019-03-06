@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec babel-node server.js",
-    "build": "babel-node api -d public --source-maps",
+    "build": "babel-node src -d public --source-maps",
     "buildProd": "webpack -p --config=webpack.server.config.js --mode=production --verbose --optimize-minimize",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -37,7 +37,10 @@
     "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.3.1",
     "babel-loader": "^8.0.5",
+    "babel-plugin-inline-dotenv": "^1.2.1",
     "body-parser": "^1.18.3",
+    "dotenv-webpack": "^1.7.0",
+    "env-path": "^1.0.6",
     "eslint": "^5.15.0",
     "gulp-babel": "^8.0.0",
     "regenerator-runtime": "^0.13.1",
@@ -48,6 +51,9 @@
   "babel": {
     "presets": [
       "@babel/preset-env"
+    ],
+    "plugins": [
+      "inline-dotenv"
     ],
     "sourceMaps": true,
     "retainLines": true

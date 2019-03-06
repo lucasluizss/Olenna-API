@@ -27,7 +27,7 @@ export const RouteTracker = (request, response, next) => {
 };
 
 export const ErrorTracker = (request, response) => {
-	const error = new Error(`Not found '${request.path}'!`);
+	const error = new Error(`===> Not found '${request.path}'!`);
 	error.status = 404;
 	
 	response.status(error.status || 500);
