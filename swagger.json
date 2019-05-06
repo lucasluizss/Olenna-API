@@ -9,7 +9,7 @@
       "email": "lucasluizss@live.com"
     }
   },
-  "host_prod": "api.swagger.io",
+  "host_prod": "https://olenna-api.herokuapp.com",
   "host": "localhost:3000",
   "basePath_notApply": "/v1",
   "schemes": [
@@ -90,7 +90,7 @@
         }
       }
     },
-    "/users/all": {
+    "/user/all": {
       "get": {
         "tags": [
           "User"
@@ -117,7 +117,7 @@
         }
       }
     },
-    "/users/new": {
+    "/user/new": {
       "post": {
         "tags": [
           "User"
@@ -146,7 +146,7 @@
         }
       }
     },
-    "/users/get": {
+    "/user/get": {
       "get": {
         "tags": [
           "User"
@@ -182,7 +182,7 @@
         }
       }
     },
-    "/users/update": {
+    "/user/update": {
       "patch": {
         "tags": [
           "User"
@@ -221,7 +221,7 @@
         }
       }
     },
-    "/users/delete": {
+    "/user/delete": {
       "delete": {
         "tags": [
           "User"
