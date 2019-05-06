@@ -1,8 +1,12 @@
 import express      		from 'express';
 import bodyParser   		from 'body-parser';
-import usersRoutes  		from './src/routes/Users';
+
+import userRoutes   		from './src/routes/User';
+import authRoutes  		  from './src/routes/Auth';
+
 import swaggerUi				from 'swagger-ui-express';
 import swaggerDocument 	from './swagger.json';
+import { VerifyToken }  from './src/middleware/Auth';
 import * as Utils 			from './src/middleware/Utils';
 import 									'./src/db/MongoDB';
 
@@ -13,9 +17,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(Utils.EnableCors);
-app.use(Utils.RouteTracker);
+app.use(Utils.RouterTracker);
+app.use(VerifyToken);
 
-app.use('/users', usersRoutes);
+app.use('/', authRoutes);
+app.use('/user', userRoutes);
 
 app.use(Utils.ErrorTracker);
 

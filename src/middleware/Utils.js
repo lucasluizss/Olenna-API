@@ -1,6 +1,14 @@
 //#region Extension Methods
 String.prototype.capFirst = function() {
-	return this.charAt(0).toUpperCase() + this.slice(1);
+	return this.charAt(0).toUpperCase() + this.toLowerCase().slice(1);
+};
+
+String.prototype.pwdValidator = function() {
+	if(!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(this)) {
+		throw new Error('Password needs minimum eight characters, at least one letter and one number.');
+	}
+
+	return this;
 };
 
 //#endregion
@@ -21,13 +29,13 @@ export const EnableCors = (request, response, next) => {
 	return next();
 };
 
-export const RouteTracker = (request, response, next) => {
+export const RouterTracker = (request, response, next) => {
 	console.log(`===> Method: ${request.method} on entity ${request.path}.`);
 	return next();
 };
 
-export const ErrorTracker = (request, response) => {
-	const error = new Error(`===> Not found '${request.path}'!`);
+export const ErrorTracker = (error, request, response) => {
+	if(!error) error = new Error(`===> Not found '${request.path}'!`);
 	error.status = 404;
 	
 	response.status(error.status || 500);

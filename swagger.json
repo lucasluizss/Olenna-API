@@ -16,7 +16,81 @@
     "http"
   ],
   "paths": {
-    "/users": {
+    "/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login",
+        "description": "Login",
+        "operationId": "login",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Log-in",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Logout",
+        "description": "Logout",
+        "operationId": "logout",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/info": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Info",
+        "description": "Info",
+        "operationId": "info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "Token to get user information",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/users/all": {
       "get": {
         "tags": [
           "User"
@@ -25,15 +99,25 @@
         "description": "Get all users.",
         "operationId": "getAllUsers",
         "produces": [
-          "application/xml",
           "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "description": "Token to get user information",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "default": {
             "description": "successful operation"
           }
         }
-      },
+      }
+    },
+    "/users/new": {
       "post": {
         "tags": [
           "User"
@@ -42,7 +126,6 @@
         "description": "Creates a new user.",
         "operationId": "createUser",
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
@@ -63,23 +146,22 @@
         }
       }
     },
-    "/users/{userId}": {
+    "/users/get": {
       "get": {
         "tags": [
           "User"
         ],
-        "summary": "Get user by id",
-        "description": "",
-        "operationId": "getUserById",
+        "summary": "Get user by token",
+        "description": "Get user by token",
+        "operationId": "getUserByToken",
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
           {
-            "name": "userId",
-            "in": "path",
-            "description": "The id that needs to be fetched. Use user1 for testing. ",
+            "in": "header",
+            "name": "token",
+            "description": "Token to get user information",
             "required": true,
             "type": "string"
           }
@@ -98,7 +180,9 @@
             "description": "User not found"
           }
         }
-      },
+      }
+    },
+    "/users/update": {
       "patch": {
         "tags": [
           "User"
@@ -107,14 +191,13 @@
         "description": "Update user.",
         "operationId": "updateUser",
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
           {
-            "name": "userId",
-            "in": "path",
-            "description": "userId that need to be updated",
+            "in": "header",
+            "name": "token",
+            "description": "Token to get user information",
             "required": true,
             "type": "string"
           },
@@ -136,7 +219,9 @@
             "description": "User not found"
           }
         }
-      },
+      }
+    },
+    "/users/delete": {
       "delete": {
         "tags": [
           "User"
@@ -145,14 +230,13 @@
         "description": "This can only be done by the logged in user.",
         "operationId": "deleteUser",
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
           {
-            "name": "userId",
-            "in": "path",
-            "description": "The userId that needs to be deleted",
+            "in": "header",
+            "name": "token",
+            "description": "Token to get user information",
             "required": true,
             "type": "string"
           }
@@ -195,6 +279,20 @@
           "type": "string"
         },
         "phone": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
           "type": "string"
         }
       },

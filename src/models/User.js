@@ -27,12 +27,7 @@ const UserSchema = new mongoose.Schema({
 	},
 	password: {
 		type: String,
-		required: true,
-		validate(value) {
-			if(!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(value)) {
-				throw new Error('Minimum eight characters, at least one letter and one number.');
-			}
-		}
+		required: true
 	},
 	phone: {
 		type: String,
