@@ -1,7 +1,6 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-
-var nodeExternals = require('webpack-node-externals');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = (env) => {
 	const isProduction = env === 'production';

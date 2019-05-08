@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export const VerifyToken = (request, response, next) => {
-	const allowedPaths = ['/login', '/logout', '/users/new'];
+	const allowedPaths = ['/login', '/logout', '/user/new'];
 
 	if (!allowedPaths.includes(request.path)) {
 		const token = request.headers['token'];

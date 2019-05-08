@@ -9,7 +9,7 @@
       "email": "lucasluizss@live.com"
     }
   },
-  "host_prod": "https://olenna-api.herokuapp.com",
+  "host_prod": "olenna-api.herokuapp.com",
   "host": "localhost:3000",
   "basePath_notApply": "/v1",
   "schemes": [
