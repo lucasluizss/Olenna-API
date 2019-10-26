@@ -4,7 +4,7 @@ export const VerifyToken = (request, response, next) => {
 	const allowedPaths = ['/login', '/logout', '/user/new'];
 
 	if (!allowedPaths.includes(request.path)) {
-		const token = request.headers['token'];
+		const token = request.headers['authorization'];
 
 		if (!token)
 			return response.status(403).send({ Auth: false, Message: 'No token provided.' });
