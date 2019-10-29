@@ -89,8 +89,8 @@ router.patch('/update', (request, response) => {
 	});
 });
 
-router.delete('/delete', (request, response) => {
-	const id = request.userId;
+router.delete('/delete/:id', (request, response) => {
+	const id = request.params.id;
 
 	User.findByIdAndDelete(id, (error, user) => {
 		if (error) {
