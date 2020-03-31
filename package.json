@@ -1,0 +1,63 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "API Restful with Node.js and ECMAScript",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node server.js",
+    "build": "babel-node src -d public --source-maps",
+    "buildProd": "webpack -p --config=webpack.server.config.js --mode=production --verbose --optimize-minimize",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasluizss/API.git"
+  },
+  "author": "Lucas Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasluizss/API/issues"
+  },
+  "homepage": "https://github.com/lucasluizss/API#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.7",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7",
+    "swagger-ui-express": "^4.1.4",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "@babel/runtime": "^7.9.2",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-inline-dotenv": "^1.5.0",
+    "body-parser": "^1.19.0",
+    "dotenv-webpack": "^1.7.0",
+    "env-path": "^1.0.7",
+    "eslint": "^5.16.0",
+    "gulp-babel": "^8.0.0",
+    "regenerator-runtime": "^0.13.5",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "inline-dotenv"
+    ],
+    "sourceMaps": true,
+    "retainLines": true
+  }
+}
