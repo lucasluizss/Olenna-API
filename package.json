@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec babel-node server.js",
-    "build": "babel-node src -d public --source-maps",
+    "build": "babel server.js -d dist",
     "buildProd": "webpack -p --config=webpack.server.config.js --mode=production --verbose --optimize-minimize",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,6 +30,7 @@
     "uuid": "^3.4.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
